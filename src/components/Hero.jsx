@@ -5,10 +5,6 @@ import {
   Sparkles, 
   Send, 
   Mail, 
-  Code, 
-  Database, 
-  Layers, 
-  CheckCircle2 
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, WhatsappIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
@@ -50,15 +46,15 @@ export default function Hero({ onOpenResume }) {
       className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-grid-pattern"
     >
       {/* Ambient background glow spheres */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-cyan/15 rounded-full blur-[120px] pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-brand-violet/15 rounded-full blur-[100px] pointer-events-none -z-10" />
-      <div className="absolute top-10 left-10 w-[350px] h-[350px] bg-brand-pink/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-cyan/15 rounded-full blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-brand-violet/15 rounded-full blur-[110px] pointer-events-none -z-10" />
+      <div className="absolute top-10 left-10 w-[350px] h-[350px] bg-brand-pink/10 rounded-full blur-[110px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Intro & Call To Actions */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
             
             {/* Status Pill Badge */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-brand-cyan/30 backdrop-blur-md shadow-lg shadow-cyan-500/10 mb-6">
@@ -99,7 +95,7 @@ export default function Hero({ onOpenResume }) {
             <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink hover:opacity-95 shadow-xl shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group w-full sm:w-auto"
+                className="px-6 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink hover:opacity-95 shadow-xl shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group w-full sm:w-auto"
               >
                 <span>EXPLORE MY WORK</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -107,7 +103,7 @@ export default function Hero({ onOpenResume }) {
 
               <button
                 onClick={onOpenResume}
-                className="px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="px-6 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <Download className="w-4 h-4" />
                 <span>DOWNLOAD RESUME</span>
@@ -117,7 +113,7 @@ export default function Hero({ onOpenResume }) {
                 href="https://wa.me/8801826847490"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-950/30 hover:bg-emerald-950/60 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="px-4 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-950/30 hover:bg-emerald-950/60 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <WhatsappIcon className="w-4 h-4" />
                 <span>WHATSAPP CHAT</span>
@@ -132,7 +128,7 @@ export default function Hero({ onOpenResume }) {
                   href={personalInfo.socials.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all hover:scale-110"
+                  className="p-2.5 rounded-[10px] bg-dark-900 border border-slate-800 text-slate-300 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all hover:scale-110"
                   aria-label="GitHub"
                 >
                   <GithubIcon className="w-4 h-4" />
@@ -141,7 +137,7 @@ export default function Hero({ onOpenResume }) {
                   href={personalInfo.socials.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all hover:scale-110"
+                  className="p-2.5 rounded-[10px] bg-dark-900 border border-slate-800 text-slate-300 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all hover:scale-110"
                   aria-label="LinkedIn"
                 >
                   <LinkedinIcon className="w-4 h-4" />
@@ -150,14 +146,14 @@ export default function Hero({ onOpenResume }) {
                   href={personalInfo.socials.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-400/50 transition-all hover:scale-110"
+                  className="p-2.5 rounded-[10px] bg-dark-900 border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-400/50 transition-all hover:scale-110"
                   aria-label="WhatsApp"
                 >
                   <WhatsappIcon className="w-4 h-4" />
                 </a>
                 <a
                   href={personalInfo.socials.email}
-                  className="p-2.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-brand-pink hover:border-brand-pink/50 transition-all hover:scale-110"
+                  className="p-2.5 rounded-[10px] bg-dark-900 border border-slate-800 text-slate-300 hover:text-brand-pink hover:border-brand-pink/50 transition-all hover:scale-110"
                   aria-label="Email"
                 >
                   <Mail className="w-4 h-4" />
@@ -172,74 +168,78 @@ export default function Hero({ onOpenResume }) {
 
           </div>
 
-          {/* Right Column: Original Interactive Profile & Glowing Tech Badges */}
-          <div className="lg:col-span-5 flex items-center justify-center relative">
+          {/* Right Column: High-End Hero Profile with NO HOVER on image and ZERO-OVERLAP badges */}
+          <div className="lg:col-span-5 flex items-center justify-center relative py-6">
             
-            {/* Outer Rotating Glow Ring */}
-            <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] flex items-center justify-center">
+            {/* Rigid Fixed-Size Square Container */}
+            <div className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] lg:w-[380px] lg:h-[380px] flex items-center justify-center flex-shrink-0">
               
-              {/* Outer decorative ring */}
-              <div className="absolute inset-0 rounded-full border border-cyan-500/20 animate-spin-slow"></div>
-              <div className="absolute inset-4 rounded-full border border-dashed border-violet-500/25"></div>
-              
-              {/* Neon Glow backdrop */}
-              <div className="absolute inset-8 rounded-full bg-gradient-to-tr from-brand-cyan/30 via-brand-violet/30 to-brand-pink/30 blur-2xl animate-pulse-slow"></div>
+              {/* Outer Ambient Glow */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/25 via-violet-500/25 to-pink-500/25 blur-3xl pointer-events-none" />
 
-              {/* Central Avatar Frame */}
-              <div className="relative w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] rounded-full p-1.5 bg-gradient-to-tr from-brand-cyan via-brand-violet to-brand-pink shadow-2xl shadow-cyan-500/20">
-                <div className="w-full h-full rounded-full overflow-hidden bg-dark-900 relative flex items-center justify-center">
+              {/* Orbiting Ring */}
+              <div className="absolute -inset-3 rounded-full border border-cyan-500/30 animate-spin-slow pointer-events-none" />
+
+              {/* Main Pure Circular Avatar Card */}
+              <div className="relative w-full h-full rounded-full p-[4px] bg-gradient-to-tr from-brand-cyan via-brand-violet to-brand-pink shadow-2xl shadow-cyan-500/30">
+                <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-b from-slate-900 via-dark-900 to-dark-950 flex items-center justify-center relative">
+                  
+                  {/* Real Photo (NO HOVER EFFECTS) */}
                   <img
                     src="/images/hero-photo.png"
                     alt={personalInfo.name}
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top"
                   />
                   
-                  {/* Subtle glass gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950/70 via-transparent to-transparent pointer-events-none"></div>
-                  
-                  {/* Name badge at bottom of avatar */}
-                  <div className="absolute bottom-4 inset-x-0 text-center">
-                    <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-dark-950/90 text-cyan-300 border border-cyan-500/40 backdrop-blur-md">
-                      MERN ARCHITECT
-                    </span>
-                  </div>
+                  {/* Subtle bottom shadow overlay */}
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-dark-950/85 via-transparent to-transparent pointer-events-none"></div>
                 </div>
               </div>
 
-              {/* Floating Tech Badge 1 (React) */}
-              <div className="absolute -top-3 right-6 sm:right-10 px-3.5 py-2 rounded-2xl glass-card flex items-center gap-2 border border-cyan-500/40 animate-float shadow-lg shadow-cyan-500/20">
-                <span className="text-xl">⚛️</span>
+              {/* 4 Floating Badges - Clean 4-Corner Anchoring with ZERO OVERLAP */}
+              
+              {/* 1. React.js (Top-Right Corner) */}
+              <div className="absolute -top-3 -right-3 sm:-right-5 z-20 px-3.5 py-1.5 rounded-[12px] glass-card flex items-center gap-2 border border-cyan-500/50 shadow-xl shadow-cyan-500/25 bg-dark-900/90 backdrop-blur-md">
+                <span className="text-lg">⚛️</span>
                 <div>
-                  <div className="text-[11px] font-bold text-white leading-tight">React.js</div>
-                  <div className="text-[9px] text-cyan-400 font-mono">Modern UI</div>
+                  <div className="text-[11px] font-bold text-white leading-tight uppercase font-mono">React.js</div>
+                  <div className="text-[9px] text-cyan-400 font-mono uppercase">Frontend</div>
                 </div>
               </div>
 
-              {/* Floating Tech Badge 2 (Node.js) */}
-              <div className="absolute bottom-4 -left-4 sm:left-0 px-3.5 py-2 rounded-2xl glass-card flex items-center gap-2 border border-emerald-500/40 animate-float-reverse shadow-lg shadow-emerald-500/20">
-                <span className="text-xl">🟢</span>
+              {/* 2. Tailwind CSS (Top-Left Corner) */}
+              <div className="absolute -top-3 -left-3 sm:-left-5 z-20 px-3.5 py-1.5 rounded-[12px] glass-card flex items-center gap-2 border border-pink-500/50 shadow-xl shadow-pink-500/25 bg-dark-900/90 backdrop-blur-md">
+                <span className="text-lg">🎨</span>
                 <div>
-                  <div className="text-[11px] font-bold text-white leading-tight">Node.js</div>
-                  <div className="text-[9px] text-emerald-400 font-mono">REST & APIs</div>
+                  <div className="text-[11px] font-bold text-white leading-tight uppercase font-mono">Tailwind</div>
+                  <div className="text-[9px] text-pink-400 font-mono uppercase">Styling</div>
                 </div>
               </div>
 
-              {/* Floating Tech Badge 3 (MongoDB) */}
-              <div className="absolute top-1/2 -right-6 sm:-right-8 px-3.5 py-2 rounded-2xl glass-card flex items-center gap-2 border border-violet-500/40 animate-float shadow-lg shadow-violet-500/20">
-                <span className="text-xl">🍃</span>
+              {/* 3. Node.js (Bottom-Left Corner) */}
+              <div className="absolute -bottom-3 -left-3 sm:-left-5 z-20 px-3.5 py-1.5 rounded-[12px] glass-card flex items-center gap-2 border border-emerald-500/50 shadow-xl shadow-emerald-500/25 bg-dark-900/90 backdrop-blur-md">
+                <span className="text-lg">🟢</span>
                 <div>
-                  <div className="text-[11px] font-bold text-white leading-tight">MongoDB</div>
-                  <div className="text-[9px] text-violet-400 font-mono">Database</div>
+                  <div className="text-[11px] font-bold text-white leading-tight uppercase font-mono">Node.js</div>
+                  <div className="text-[9px] text-emerald-400 font-mono uppercase">Backend</div>
                 </div>
               </div>
 
-              {/* Floating Tech Badge 4 (Tailwind) */}
-              <div className="absolute -bottom-4 right-12 px-3.5 py-2 rounded-2xl glass-card flex items-center gap-2 border border-pink-500/40 animate-float-reverse shadow-lg shadow-pink-500/20">
-                <span className="text-xl">🎨</span>
+              {/* 4. MongoDB (Bottom-Right Corner) */}
+              <div className="absolute -bottom-3 -right-3 sm:-right-5 z-20 px-3.5 py-1.5 rounded-[12px] glass-card flex items-center gap-2 border border-violet-500/50 shadow-xl shadow-violet-500/25 bg-dark-900/90 backdrop-blur-md">
+                <span className="text-lg">🍃</span>
                 <div>
-                  <div className="text-[11px] font-bold text-white leading-tight">Tailwind CSS</div>
-                  <div className="text-[9px] text-pink-400 font-mono">Responsive</div>
+                  <div className="text-[11px] font-bold text-white leading-tight uppercase font-mono">MongoDB</div>
+                  <div className="text-[9px] text-violet-400 font-mono uppercase">Database</div>
                 </div>
+              </div>
+
+              {/* Center-Bottom Role Badge */}
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 px-3.5 py-1.5 rounded-[10px] bg-dark-950/95 border border-cyan-500/60 backdrop-blur-md shadow-2xl shadow-cyan-500/30 flex items-center gap-1.5 whitespace-nowrap">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+                <span className="text-[10px] font-mono font-bold tracking-wider text-cyan-300 uppercase">
+                  MERN ARCHITECT
+                </span>
               </div>
 
             </div>
