@@ -2,7 +2,7 @@
 
 An ultra-modern, responsive, high-performance developer portfolio website designed and engineered with **React 18, Tailwind CSS, Lucide Icons, and Canvas particle animations**.
 
-Live Website: [https://rezaul-islam-7b565.web.app/](https://rezaul-islam-7b565.web.app/)
+Live Website: https://rezaul-islam.netlify.app/
 
 ---
 
