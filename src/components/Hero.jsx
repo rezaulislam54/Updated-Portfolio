@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight, 
   Download, 
@@ -14,6 +14,23 @@ export default function Hero({ onOpenResume }) {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Interactive 3D Parallax Tilt state
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: x * 14, y: -y * 14 });
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+    setIsHovered(false);
+  };
 
   useEffect(() => {
     const currentRole = personalInfo.roles[currentRoleIndex];
@@ -54,26 +71,44 @@ export default function Hero({ onOpenResume }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Hero Image Avatar (ORDER 1 on Mobile, ORDER 2 on Desktop) */}
-          <div className="order-1 lg:order-2 lg:col-span-5 flex items-center justify-center relative py-4 sm:py-6">
+          <div 
+            className="order-1 lg:order-2 lg:col-span-5 flex items-center justify-center relative py-4 sm:py-6 cursor-pointer select-none"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
             
-            {/* Rigid Fixed-Size Square Container - Larger on Desktop (420px) */}
-            <div className="relative w-[270px] h-[270px] sm:w-[340px] sm:h-[340px] lg:w-[420px] lg:h-[420px] flex items-center justify-center flex-shrink-0">
+            {/* Rigid Container with Dynamic 3D Perspective Tilt */}
+            <div 
+              className="relative w-[270px] h-[270px] sm:w-[340px] sm:h-[340px] lg:w-[420px] lg:h-[420px] flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out"
+              style={{
+                transform: `perspective(1000px) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg) scale3d(${isHovered ? 1.02 : 1}, ${isHovered ? 1.02 : 1}, 1)`,
+                transformStyle: 'preserve-3d',
+              }}
+            >
               
-              {/* Outer Ambient Glow */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/25 via-violet-500/25 to-pink-500/25 blur-3xl pointer-events-none" />
+              {/* Outer Ambient Glow Pulsing */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/25 via-violet-500/25 to-pink-500/25 blur-3xl pointer-events-none animate-pulse-slow" />
 
-              {/* Orbiting Ring */}
-              <div className="absolute -inset-3 rounded-full border border-cyan-500/30 animate-spin-slow pointer-events-none" />
+              {/* Layer 1: Outer Clockwise Orbiting Neon Ring with glowing celestial node */}
+              <div className="absolute -inset-4 rounded-full border border-cyan-500/30 animate-spin-slow pointer-events-none">
+                <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee] absolute -top-1 left-1/2 -translate-x-1/2"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_#22d3ee] absolute -bottom-1 left-1/2 -translate-x-1/2"></div>
+              </div>
 
-              {/* Main Pure Circular Avatar Card */}
-              <div className="relative w-full h-full rounded-full p-[4px] sm:p-[5px] bg-gradient-to-tr from-brand-cyan via-brand-violet to-brand-pink shadow-2xl shadow-cyan-500/30">
+              {/* Layer 2: Middle Counter-Rotating Dashed Violet Ring with glowing node */}
+              <div className="absolute -inset-1.5 rounded-full border border-dashed border-violet-500/30 animate-spin-reverse pointer-events-none">
+                <div className="w-2 h-2 rounded-full bg-pink-400 shadow-[0_0_10px_#ec4899] absolute top-1/4 -right-1"></div>
+              </div>
+
+              {/* Main Pure Circular Avatar Card with Live Gradient Shift */}
+              <div className="relative w-full h-full rounded-full p-[4px] sm:p-[5px] bg-gradient-to-tr from-brand-cyan via-brand-violet via-brand-pink to-brand-amber bg-[length:300%_300%] animate-gradient-shift shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow duration-300">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-b from-slate-900 via-dark-900 to-dark-950 flex items-center justify-center relative">
                   
-                  {/* Transparent Portrait */}
+                  {/* Transparent Portrait Photo */}
                   <img
                     src="/images/hero-photo.png"
                     alt={personalInfo.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top filter brightness-105 contrast-105"
                   />
                   
                   {/* Subtle bottom shadow overlay */}
@@ -81,11 +116,14 @@ export default function Hero({ onOpenResume }) {
                 </div>
               </div>
 
-              {/* 4 Floating Badges - Clean 4-Corner Anchoring with ZERO OVERLAP */}
+              {/* 4 Interactive Floating Tech Badges with Micro-Physics */}
               
               {/* 1. React.js (Top-Right Corner) */}
-              <div className="absolute -top-2 sm:-top-3 -right-2 sm:-right-4 lg:-right-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-cyan-500/50 shadow-xl shadow-cyan-500/25 bg-dark-900/90 backdrop-blur-md">
-                <span className="text-base sm:text-lg">⚛️</span>
+              <div 
+                className="absolute -top-2 sm:-top-3 -right-2 sm:-right-4 lg:-right-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-cyan-500/50 shadow-xl shadow-cyan-500/25 bg-dark-900/90 backdrop-blur-md animate-float hover:scale-110 hover:border-cyan-400 hover:shadow-cyan-400/50 transition-all duration-200"
+                style={{ transform: `translateZ(30px)` }}
+              >
+                <span className="text-base sm:text-lg animate-spin" style={{ animationDuration: '8s' }}>⚛️</span>
                 <div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-white leading-tight uppercase font-mono">React.js</div>
                   <div className="text-[8px] sm:text-[9px] text-cyan-400 font-mono uppercase">Frontend</div>
@@ -93,7 +131,10 @@ export default function Hero({ onOpenResume }) {
               </div>
 
               {/* 2. Tailwind CSS (Top-Left Corner) */}
-              <div className="absolute -top-2 sm:-top-3 -left-2 sm:-left-4 lg:-left-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-pink-500/50 shadow-xl shadow-pink-500/25 bg-dark-900/90 backdrop-blur-md">
+              <div 
+                className="absolute -top-2 sm:-top-3 -left-2 sm:-left-4 lg:-left-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-pink-500/50 shadow-xl shadow-pink-500/25 bg-dark-900/90 backdrop-blur-md animate-float-delayed hover:scale-110 hover:border-pink-400 hover:shadow-pink-400/50 transition-all duration-200"
+                style={{ transform: `translateZ(30px)` }}
+              >
                 <span className="text-base sm:text-lg">🎨</span>
                 <div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-white leading-tight uppercase font-mono">Tailwind</div>
@@ -102,7 +143,10 @@ export default function Hero({ onOpenResume }) {
               </div>
 
               {/* 3. Node.js (Bottom-Left Corner) */}
-              <div className="absolute -bottom-2 sm:-bottom-3 -left-2 sm:-left-4 lg:-left-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-emerald-500/50 shadow-xl shadow-emerald-500/25 bg-dark-900/90 backdrop-blur-md">
+              <div 
+                className="absolute -bottom-2 sm:-bottom-3 -left-2 sm:-left-4 lg:-left-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-emerald-500/50 shadow-xl shadow-emerald-500/25 bg-dark-900/90 backdrop-blur-md animate-float-reverse hover:scale-110 hover:border-emerald-400 hover:shadow-emerald-400/50 transition-all duration-200"
+                style={{ transform: `translateZ(30px)` }}
+              >
                 <span className="text-base sm:text-lg">🟢</span>
                 <div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-white leading-tight uppercase font-mono">Node.js</div>
@@ -111,7 +155,10 @@ export default function Hero({ onOpenResume }) {
               </div>
 
               {/* 4. MongoDB (Bottom-Right Corner) */}
-              <div className="absolute -bottom-2 sm:-bottom-3 -right-2 sm:-right-4 lg:-right-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-violet-500/50 shadow-xl shadow-violet-500/25 bg-dark-900/90 backdrop-blur-md">
+              <div 
+                className="absolute -bottom-2 sm:-bottom-3 -right-2 sm:-right-4 lg:-right-6 z-20 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[12px] glass-card flex items-center gap-1.5 sm:gap-2 border border-violet-500/50 shadow-xl shadow-violet-500/25 bg-dark-900/90 backdrop-blur-md animate-float-slow hover:scale-110 hover:border-violet-400 hover:shadow-violet-400/50 transition-all duration-200"
+                style={{ transform: `translateZ(30px)` }}
+              >
                 <span className="text-base sm:text-lg">🍃</span>
                 <div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-white leading-tight uppercase font-mono">MongoDB</div>
@@ -119,9 +166,15 @@ export default function Hero({ onOpenResume }) {
                 </div>
               </div>
 
-              {/* Center-Bottom Role Badge */}
-              <div className="absolute -bottom-4 sm:-bottom-5 left-1/2 -translate-x-1/2 z-30 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[10px] bg-dark-950/95 border border-cyan-500/60 backdrop-blur-md shadow-2xl shadow-cyan-500/30 flex items-center gap-1.5 whitespace-nowrap">
-                <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-cyan-400 animate-pulse" />
+              {/* Center-Bottom Role Badge with Interactive Status Indicator */}
+              <div 
+                className="absolute -bottom-4 sm:-bottom-5 left-1/2 -translate-x-1/2 z-30 px-3.5 py-1.5 rounded-[10px] bg-dark-950/95 border border-cyan-500/60 backdrop-blur-md shadow-2xl shadow-cyan-500/30 flex items-center gap-1.5 whitespace-nowrap hover:border-cyan-400 hover:scale-105 transition-all"
+                style={{ transform: `translateX(-50%) translateZ(40px)` }}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
                 <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-wider text-cyan-300 uppercase">
                   FRONT END EXECUTIVE
                 </span>
@@ -170,10 +223,10 @@ export default function Hero({ onOpenResume }) {
             </p>
 
             {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-3.5 mb-6 sm:mb-8 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-3.5 mb-8 sm:mb-11 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink hover:opacity-95 shadow-xl shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group w-full sm:w-auto"
+                className="px-6 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink hover:opacity-95 shadow-xl shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group w-full sm:w-auto"
               >
                 <span>EXPLORE MY WORK</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -187,25 +240,15 @@ export default function Hero({ onOpenResume }) {
                     onOpenResume();
                   }
                 }}
-                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto group"
+                className="px-6 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto group shadow-md"
               >
                 <Download className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
                 <span>DOWNLOAD RESUME PDF</span>
               </a>
-
-              <a
-                href="https://wa.me/8801826847480"
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-950/30 hover:bg-emerald-950/60 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
-              >
-                <WhatsappIcon className="w-4 h-4" />
-                <span>WHATSAPP CHAT</span>
-              </a>
             </div>
 
             {/* Social Icons Bar & Quick Contacts */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-4 border-t border-slate-800/80 w-full">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-5 sm:pt-6 border-t border-slate-800/80 w-full">
               <span className="text-[11px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">CONNECT:</span>
               <div className="flex items-center gap-2.5">
                 <a

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, WhatsappIcon, FacebookIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Footer() {
@@ -27,11 +27,11 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top footer row */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 pb-10 sm:pb-12 border-b border-slate-800/80">
+        {/* Top footer row with Grid layout to guarantee 1-line nav menu on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-6 pb-10 sm:pb-12 border-b border-slate-800/80">
           
-          {/* Brand & Tagline with official logo */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Brand & Tagline with official logo (Col 1-4) */}
+          <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
             <a href="#home" className="flex items-center gap-3 mb-2 group">
               <div className="w-10 h-10 rounded-[10px] bg-dark-900 border border-amber-500/30 p-1 flex items-center justify-center transition-all duration-300 group-hover:border-amber-400 shadow-md shadow-amber-500/10">
                 <img
@@ -44,26 +44,26 @@ export default function Footer() {
                 {personalInfo.name}
               </span>
             </a>
-            <p className="text-xs text-slate-400 max-w-sm">
-              Front End Developer (Executive) crafting high-impact digital experiences with modern web technologies.
+            <p className="text-xs text-slate-400 max-w-xs">
+              Front End Developer (Executive) crafting high-impact digital experiences.
             </p>
           </div>
 
-          {/* Nav links */}
-          <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-5 gap-y-2 text-center">
+          {/* Nav links - Guaranteed SINGLE LINE on Desktop (Col 5-10) */}
+          <div className="lg:col-span-6 flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-3.5 sm:gap-x-4 lg:gap-x-3 xl:gap-x-5 gap-y-2 text-center whitespace-nowrap">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[11px] sm:text-xs font-semibold text-slate-400 hover:text-brand-cyan transition-colors uppercase tracking-wider py-1 px-1.5"
+                className="text-[11px] sm:text-xs lg:text-[11px] xl:text-xs font-semibold text-slate-400 hover:text-brand-cyan transition-colors uppercase tracking-wider py-1 px-1 whitespace-nowrap"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          {/* Social Links Bar */}
-          <div className="flex items-center gap-2">
+          {/* Social Links Bar (Col 11-12) */}
+          <div className="lg:col-span-2 flex items-center justify-center lg:justify-end gap-2">
             <a
               href={personalInfo.socials.github}
               target="_blank"
@@ -102,7 +102,7 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom copyright row with 100% mobile responsive formatting */}
+        {/* Bottom copyright row */}
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] sm:text-xs font-mono text-slate-500 uppercase tracking-wider text-center sm:text-left">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1">
             <span>COPYRIGHT © 2026 - ALL RIGHTS RESERVED BY</span>
