@@ -5,7 +5,6 @@ import {
   Award, 
   Calendar, 
   Sparkles, 
-  CheckCircle2, 
   Building2 
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
@@ -29,8 +28,8 @@ export default function ExperienceEducation() {
           <h2 className="text-[26px] sm:text-4xl font-extrabold text-white tracking-tight mb-3 sm:mb-4 uppercase leading-tight">
             EXPERIENCE & <span className="text-gradient-cyan">EDUCATION</span>
           </h2>
-          <p className="text-slate-400 text-xs sm:text-base leading-relaxed">
-            Hands-on professional internship experience paired with structured academic training in Computer Science and MERN Stack Engineering.
+          <p className="text-slate-400 text-[14px] sm:text-base leading-relaxed">
+            Hands-on professional engineering experience paired with structured academic training in Computer Science and Web Development.
           </p>
         </div>
 
@@ -45,7 +44,7 @@ export default function ExperienceEducation() {
               </div>
               <div>
                 <h3 className="text-base sm:text-xl font-bold text-white uppercase tracking-wide">WORK EXPERIENCE</h3>
-                <p className="text-[11px] sm:text-xs text-slate-400 font-mono uppercase tracking-wider">Professional Internship & Teamwork</p>
+                <p className="text-[11px] sm:text-xs text-slate-400 font-mono uppercase tracking-wider">Professional Agency & Full-Stack Projects</p>
               </div>
             </div>
 
@@ -77,19 +76,10 @@ export default function ExperienceEducation() {
                       <span>{exp.company}</span>
                     </div>
 
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                    {/* Clean narrative description without duplicate bullet points */}
+                    <p className="text-slate-300 text-[13px] sm:text-sm leading-relaxed mb-4">
                       {exp.description}
                     </p>
-
-                    {/* Highlights bullet points */}
-                    <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5">
-                      {exp.highlights.map((item, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-xs text-slate-300">{item}</span>
-                        </div>
-                      ))}
-                    </div>
 
                     {/* Skills pills */}
                     <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/80">
