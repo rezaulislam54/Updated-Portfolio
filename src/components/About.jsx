@@ -69,42 +69,42 @@ export default function About({ onCopyText, copiedText }) {
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-10 sm:py-16 md:py-20 relative overflow-hidden">
       {/* Background radial accent */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[130px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with UPPERCASE */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with 26px heading on mobile */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[10px] bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-3 uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>DISCOVER MY JOURNEY</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4 uppercase">
+          <h2 className="text-[26px] sm:text-4xl font-extrabold text-white tracking-tight mb-3 sm:mb-4 uppercase leading-tight">
             ABOUT <span className="text-gradient-cyan">ME</span> & CORE VALUES
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-400 text-xs sm:text-base leading-relaxed">
             Passionate software developer dedicated to crafting modern, user-friendly digital experiences that blend clean code architecture with impactful design.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           {/* Left Column: Bio Narrative & Strengths */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            <div className="glass-card p-6 sm:p-8 rounded-[14px] border border-slate-800/80 mb-6">
-              <div className="flex items-center gap-3 mb-6">
+            <div className="glass-card p-5 sm:p-8 rounded-[14px] border border-slate-800/80 mb-6">
+              <div className="flex items-center gap-3 mb-5 sm:mb-6">
                 <div className="p-2.5 rounded-[10px] bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
                   <User className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white uppercase tracking-wide">WHO I AM</h3>
-                  <p className="text-xs text-slate-400 font-mono uppercase tracking-wider">Full Stack Engineer & Problem Solver</p>
+                  <h3 className="text-base sm:text-xl font-bold text-white uppercase tracking-wide">WHO I AM</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-400 font-mono uppercase tracking-wider">Full Stack Engineer & Problem Solver</p>
                 </div>
               </div>
 
-              <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+              <div className="space-y-4 text-slate-300 text-xs sm:text-base leading-relaxed">
                 <p>
                   Hi, I'm <strong className="text-white font-semibold">Md. Rezaul Islam</strong>, a passionate software developer with expertise in <span className="text-cyan-400 font-medium">Node.js</span>, <span className="text-violet-400 font-medium">React.js</span>, <span className="text-emerald-400 font-medium">Next.js</span>, <span className="text-sky-400 font-medium">Express.js</span>, and <span className="text-pink-400 font-medium">Tailwind CSS</span>.
                 </p>
@@ -118,7 +118,7 @@ export default function About({ onCopyText, copiedText }) {
             </div>
 
             {/* 4 Core Strengths Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               {coreStrengths.map((item, idx) => (
                 <div 
                   key={idx} 
@@ -138,21 +138,21 @@ export default function About({ onCopyText, copiedText }) {
 
           {/* Right Column: Contact Cards & Quick Details */}
           <div className="lg:col-span-5 flex flex-col gap-5">
-            <div className="glass-card p-6 sm:p-8 rounded-[14px] border border-slate-800/80 h-full flex flex-col justify-between">
+            <div className="glass-card p-5 sm:p-8 rounded-[14px] border border-slate-800/80 h-full flex flex-col justify-between">
               <div>
-                <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-wide">CONTACT INFORMATION</h3>
-                <p className="text-xs text-slate-400 mb-6">Feel free to reach out directly via any of these channels:</p>
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2 uppercase tracking-wide">CONTACT INFORMATION</h3>
+                <p className="text-xs text-slate-400 mb-5">Feel free to reach out directly via any of these channels:</p>
 
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   {contactItems.map((item) => {
                     const isCopied = copiedText === item.value;
                     return (
                       <div
                         key={item.id}
-                        className="p-4 rounded-[12px] bg-slate-900/80 border border-slate-800 hover:border-brand-cyan/40 transition-all duration-200 flex items-center justify-between group"
+                        className="p-3.5 sm:p-4 rounded-[12px] bg-slate-900/80 border border-slate-800 hover:border-brand-cyan/40 transition-all duration-200 flex items-center justify-between group"
                       >
                         <div className="flex items-center gap-3 overflow-hidden">
-                          <div className="p-2.5 rounded-[10px] bg-dark-950 border border-slate-800 flex-shrink-0">
+                          <div className="p-2 sm:p-2.5 rounded-[10px] bg-dark-950 border border-slate-800 flex-shrink-0">
                             {item.icon}
                           </div>
                           <div className="min-w-0">
@@ -203,10 +203,10 @@ export default function About({ onCopyText, copiedText }) {
               </div>
 
               {/* Direct WhatsApp Callout */}
-              <div className="mt-6 p-4 rounded-[12px] bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-500/30 flex items-center justify-between">
+              <div className="mt-5 p-4 rounded-[12px] bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-500/30 flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">QUICK RESPONSE GUARANTEED</div>
-                  <div className="text-[11px] text-slate-300">Message on WhatsApp for instant replies</div>
+                  <div className="text-[11px] sm:text-xs font-bold text-emerald-400 uppercase tracking-wider">QUICK RESPONSE GUARANTEED</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-300">Message on WhatsApp for instant replies</div>
                 </div>
                 <a
                   href="https://wa.me/8801826847490"

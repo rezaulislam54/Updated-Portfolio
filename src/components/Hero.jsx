@@ -43,7 +43,7 @@ export default function Hero({ onOpenResume }) {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-grid-pattern"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-10 sm:pt-28 sm:pb-16 overflow-hidden bg-grid-pattern"
     >
       {/* Ambient background glow spheres */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-cyan/15 rounded-full blur-[130px] pointer-events-none -z-10" />
@@ -57,28 +57,28 @@ export default function Hero({ onOpenResume }) {
           <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
             
             {/* Status Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-brand-cyan/30 backdrop-blur-md shadow-lg shadow-cyan-500/10 mb-6">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-brand-cyan/30 backdrop-blur-md shadow-lg shadow-cyan-500/10 mb-5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
-              <span className="text-xs font-semibold text-slate-200 tracking-wide uppercase">
+              <span className="text-[11px] sm:text-xs font-semibold text-slate-200 tracking-wide uppercase">
                 AVAILABLE FOR NEW PROJECTS & FULL-TIME ROLES
               </span>
             </div>
 
-            {/* Main Greeting & Name */}
-            <div className="mb-4 space-y-1">
-              <span className="block text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-wide uppercase leading-tight">
+            {/* Main Greeting & Name with Comfortable Line Height & Refined Sizing */}
+            <div className="mb-4 space-y-2">
+              <span className="block text-[22px] sm:text-3xl lg:text-4xl font-extrabold text-white tracking-wide uppercase leading-relaxed">
                 HELLO, I'M
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-wider text-gradient-brand leading-tight uppercase">
+              <h1 className="text-[26px] sm:text-4xl lg:text-5xl font-extrabold tracking-wider text-gradient-brand leading-relaxed uppercase">
                 {personalInfo.name}
               </h1>
             </div>
 
             {/* Typewriter Dynamic Role */}
-            <div className="flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-bold text-slate-200 min-h-[40px] mb-6">
+            <div className="flex items-center gap-2 text-lg sm:text-xl lg:text-2xl font-bold text-slate-200 min-h-[38px] mb-6">
               <span className="text-slate-400 uppercase">I BUILD</span>
               <span className="text-brand-cyan font-mono border-b-2 border-brand-cyan/80 pb-0.5 uppercase">
                 {displayedText}
@@ -87,15 +87,15 @@ export default function Hero({ onOpenResume }) {
             </div>
 
             {/* Bio summary */}
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl font-normal">
+            <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-2xl font-normal">
               A results-driven <strong className="text-white font-semibold">MERN Stack Developer</strong> passionate about creating fast, resilient, and responsive web applications. Specialized in <span className="text-cyan-400 font-medium">React.js</span>, <span className="text-violet-400 font-medium">Node.js</span>, <span className="text-emerald-400 font-medium">MongoDB</span>, and <span className="text-sky-400 font-medium">Tailwind CSS</span>.
             </p>
 
             {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-3.5 mb-8 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="px-6 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink hover:opacity-95 shadow-xl shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group w-full sm:w-auto"
+                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink hover:opacity-95 shadow-xl shadow-brand-cyan/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group w-full sm:w-auto"
               >
                 <span>EXPLORE MY WORK</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -103,7 +103,7 @@ export default function Hero({ onOpenResume }) {
 
               <button
                 onClick={onOpenResume}
-                className="px-6 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <Download className="w-4 h-4" />
                 <span>DOWNLOAD RESUME</span>
@@ -113,7 +113,7 @@ export default function Hero({ onOpenResume }) {
                 href="https://wa.me/8801826847490"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-950/30 hover:bg-emerald-950/60 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="px-4 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-950/30 hover:bg-emerald-950/60 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <WhatsappIcon className="w-4 h-4" />
                 <span>WHATSAPP CHAT</span>
@@ -168,11 +168,11 @@ export default function Hero({ onOpenResume }) {
 
           </div>
 
-          {/* Right Column: High-End Hero Profile with NO HOVER on image and ZERO-OVERLAP badges */}
-          <div className="lg:col-span-5 flex items-center justify-center relative py-6">
+          {/* Right Column: Circular Avatar Frame with New Clean Photo */}
+          <div className="lg:col-span-5 flex items-center justify-center relative py-4 sm:py-6">
             
             {/* Rigid Fixed-Size Square Container */}
-            <div className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] lg:w-[380px] lg:h-[380px] flex items-center justify-center flex-shrink-0">
+            <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[370px] lg:h-[370px] flex items-center justify-center flex-shrink-0">
               
               {/* Outer Ambient Glow */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/25 via-violet-500/25 to-pink-500/25 blur-3xl pointer-events-none" />
@@ -184,7 +184,7 @@ export default function Hero({ onOpenResume }) {
               <div className="relative w-full h-full rounded-full p-[4px] bg-gradient-to-tr from-brand-cyan via-brand-violet to-brand-pink shadow-2xl shadow-cyan-500/30">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-b from-slate-900 via-dark-900 to-dark-950 flex items-center justify-center relative">
                   
-                  {/* Real Photo (NO HOVER EFFECTS) */}
+                  {/* New Clean Transparent Portrait */}
                   <img
                     src="/images/hero-photo.png"
                     alt={personalInfo.name}
