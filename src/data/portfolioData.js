@@ -28,10 +28,10 @@ export const portfolioData = {
   },
 
   stats: [
-    { label: "Projects Completed", value: "15+", suffix: "", desc: "From concept to production" },
-    { label: "Technologies Mastered", value: "18+", suffix: "", desc: "Modern frontend & backend stack" },
-    { label: "Client Satisfaction", value: "100%", suffix: "", desc: "Clean code & on-time delivery" },
-    { label: "Code Dedication", value: "24/7", suffix: "", desc: "Continuous learning & support" },
+    { id: 1, label: "Projects Completed", value: "15+", suffix: "", desc: "From concept to production", icon: "Code2", color: "cyan" },
+    { id: 2, label: "Technologies Mastered", value: "18+", suffix: "", desc: "Modern frontend & backend stack", icon: "Award", color: "violet" },
+    { id: 3, label: "Client Satisfaction", value: "100%", suffix: "", desc: "Clean code & on-time delivery", icon: "Users", color: "emerald" },
+    { id: 4, label: "Code Dedication", value: "24/7", suffix: "", desc: "Continuous learning & support", icon: "Flame", color: "amber" },
   ],
 
   skillCategories: [
