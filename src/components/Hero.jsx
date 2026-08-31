@@ -123,7 +123,7 @@ export default function Hero({ onOpenResume }) {
               <div className="absolute -bottom-4 sm:-bottom-5 left-1/2 -translate-x-1/2 z-30 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-[10px] bg-dark-950/95 border border-cyan-500/60 backdrop-blur-md shadow-2xl shadow-cyan-500/30 flex items-center gap-1.5 whitespace-nowrap">
                 <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-cyan-400 animate-pulse" />
                 <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-wider text-cyan-300 uppercase">
-                  MERN ARCHITECT
+                  FRONT END EXECUTIVE
                 </span>
               </div>
 
@@ -141,7 +141,7 @@ export default function Hero({ onOpenResume }) {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
               <span className="text-[11px] sm:text-xs font-semibold text-slate-200 tracking-wide uppercase">
-                AVAILABLE FOR NEW PROJECTS & FULL-TIME ROLES
+                AVAILABLE FOR NEW PROJECTS & EXECUTIVE ROLES
               </span>
             </div>
 
@@ -166,7 +166,7 @@ export default function Hero({ onOpenResume }) {
 
             {/* Bio summary with 14px on mobile */}
             <p className="text-slate-300 text-[14px] sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-2xl font-normal">
-              A results-driven <strong className="text-white font-semibold">MERN Stack Developer</strong> passionate about creating fast, resilient, and responsive web applications. Specialized in <span className="text-cyan-400 font-medium">React.js</span>, <span className="text-violet-400 font-medium">Node.js</span>, <span className="text-emerald-400 font-medium">MongoDB</span>, and <span className="text-sky-400 font-medium">Tailwind CSS</span>.
+              A results-driven <strong className="text-white font-semibold">Front-End Developer (Executive)</strong> with hands-on experience building and maintaining sites on <span className="text-cyan-400 font-medium">Wix, Wix Studio, Squarespace, GoDaddy</span>, plus full-stack applications in <span className="text-violet-400 font-medium">React, Node.js, Express.js</span>, and <span className="text-emerald-400 font-medium">MongoDB</span>.
             </p>
 
             {/* CTA Action Buttons */}
@@ -179,16 +179,22 @@ export default function Hero({ onOpenResume }) {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
 
-              <button
-                onClick={onOpenResume}
-                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+              <a
+                href="/Resume-Md-Rezaul-Islam.pdf"
+                download="Resume-Md-Rezaul-Islam.pdf"
+                onClick={(e) => {
+                  if (onOpenResume) {
+                    onOpenResume();
+                  }
+                }}
+                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-200 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:text-brand-cyan hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto group"
               >
-                <Download className="w-4 h-4" />
-                <span>DOWNLOAD RESUME</span>
-              </button>
+                <Download className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+                <span>DOWNLOAD RESUME PDF</span>
+              </a>
 
               <a
-                href="https://wa.me/8801826847490"
+                href="https://wa.me/8801826847480"
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 py-3 sm:py-3.5 rounded-[12px] font-bold text-xs sm:text-sm uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-950/30 hover:bg-emerald-950/60 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"

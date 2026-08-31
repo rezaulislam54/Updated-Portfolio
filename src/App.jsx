@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ParticleBackground from './components/ParticleBackground';
+import LoadingSpinner from './components/LoadingSpinner';
+import ScrollReveal from './components/ScrollReveal';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -16,6 +18,7 @@ import ResumeModal from './components/ResumeModal';
 import Toast from './components/Toast';
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [copiedText, setCopiedText] = useState('');
   const [toast, setToast] = useState({ message: '', type: 'success' });
@@ -35,28 +38,58 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-dark-950 text-slate-100 font-sans selection:bg-brand-cyan/30 selection:text-brand-cyan">
+      {/* High-Tech Preloader Loading Spinner */}
+      {loading && <LoadingSpinner onComplete={() => setLoading(false)} />}
+
       {/* Particle dynamic canvas */}
       <ParticleBackground />
 
       {/* Navigation Header */}
       <Navbar onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections with Smooth Scroll Reveal */}
       <main className="relative z-10">
         <Hero onOpenResume={() => setResumeOpen(true)} />
-        <Stats />
-        <About onCopyText={handleCopyText} copiedText={copiedText} />
-        <Skills />
-        <Projects />
-        <Platforms />
-        <WorkProcess />
-        <Services />
-        <ExperienceEducation />
-        <Contact 
-          onCopyText={handleCopyText} 
-          copiedText={copiedText} 
-          onNotify={notify} 
-        />
+        
+        <ScrollReveal>
+          <Stats />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <About onCopyText={handleCopyText} copiedText={copiedText} />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Skills />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Projects />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Platforms />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <WorkProcess />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Services />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <ExperienceEducation />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <Contact 
+            onCopyText={handleCopyText} 
+            copiedText={copiedText} 
+            onNotify={notify} 
+          />
+        </ScrollReveal>
       </main>
 
       {/* Footer */}

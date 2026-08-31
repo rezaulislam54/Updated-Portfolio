@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { X, Download, Printer, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, Award } from 'lucide-react';
+import React from 'react';
+import { X, Download, Printer, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, Globe, ExternalLink } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function ResumeModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
-  const { personalInfo, experience, education, certifications, skillCategories, projects } = portfolioData;
+  const { personalInfo } = portfolioData;
 
   const handlePrint = () => {
     window.print();
@@ -23,21 +23,29 @@ export default function ResumeModal({ isOpen, onClose }) {
       <div className="relative w-full max-w-4xl bg-dark-900 border border-slate-700/90 rounded-[14px] shadow-2xl overflow-hidden z-10 my-auto animate-fadeIn max-h-[92vh] flex flex-col">
         
         {/* Header Actions */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-dark-950/70">
+        <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 border-b border-slate-800 bg-dark-950/80">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-ping"></span>
-            <h3 className="text-sm font-mono font-bold text-white uppercase tracking-wider">
-              Curriculum Vitae Preview
+            <h3 className="text-xs sm:text-sm font-mono font-bold text-white uppercase tracking-wider">
+              CURRICULUM VITAE (MD REZAUL ISLAM)
             </h3>
           </div>
 
           <div className="flex items-center gap-2">
+            <a
+              href="/Resume-Md-Rezaul-Islam.pdf"
+              download="Resume-Md-Rezaul-Islam.pdf"
+              className="px-3 py-1.5 rounded-[10px] bg-gradient-to-r from-brand-cyan to-brand-violet hover:opacity-95 text-xs font-bold text-white shadow-md shadow-cyan-500/20 flex items-center gap-1.5 transition-all hover:scale-105"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>DOWNLOAD PDF</span>
+            </a>
             <button
               onClick={handlePrint}
-              className="px-3 py-1.5 rounded-[10px] bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 flex items-center gap-1.5 hover:scale-105 transition-all"
+              className="px-3 py-1.5 rounded-[10px] bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 hidden sm:flex items-center gap-1.5 transition-all"
             >
               <Printer className="w-3.5 h-3.5 text-brand-cyan" />
-              <span className="hidden sm:inline">Print / Save PDF</span>
+              <span>PRINT</span>
             </button>
             <button
               onClick={onClose}
@@ -50,128 +58,165 @@ export default function ResumeModal({ isOpen, onClose }) {
         </div>
 
         {/* CV Printable & Scrollable View */}
-        <div className="p-6 sm:p-10 overflow-y-auto space-y-8 bg-slate-950/50 text-slate-200 print:bg-white print:text-black">
+        <div className="p-6 sm:p-10 overflow-y-auto space-y-6 bg-slate-950/60 text-slate-200 print:bg-white print:text-black">
           
           {/* Header */}
-          <div className="border-b border-slate-800 pb-6">
-            <h1 className="text-3xl font-extrabold text-white tracking-tight mb-1">
-              {personalInfo.name}
+          <div className="border-b border-slate-800 pb-5 text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wider uppercase mb-1">
+              MD REZAUL ISLAM
             </h1>
-            <p className="text-base text-brand-cyan font-semibold mb-3">
-              Full Stack Web Developer (MERN Stack Specialist)
+            <p className="text-sm sm:text-base text-brand-cyan font-bold mb-3 uppercase tracking-wide">
+              Front End Developer (Executive)
             </p>
-            <div className="flex flex-wrap gap-4 text-xs font-mono text-slate-400">
-              <span className="flex items-center gap-1">
-                <Mail className="w-3.5 h-3.5 text-violet-400" />
-                {personalInfo.email}
-              </span>
-              <span className="flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                {personalInfo.phone}
-              </span>
-              <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-pink-400" />
-                {personalInfo.address}
-              </span>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-slate-300">
+              <span>Rangpur, Dhaka, Bangladesh</span>
+              <span>•</span>
+              <a href="tel:01826847480" className="text-cyan-300 hover:underline">01826847480</a>
+              <span>•</span>
+              <a href="mailto:programmermdrezaulislam@gmail.com" className="text-violet-300 hover:underline">programmermdrezaulislam@gmail.com</a>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-slate-400 mt-2">
+              <a href="https://github.com/rezaulislam54" target="_blank" rel="noreferrer" className="hover:text-cyan-400">github.com/rezaulislam54</a>
+              <span>•</span>
+              <a href="https://rezaul-islam-7b565.web.app" target="_blank" rel="noreferrer" className="hover:text-cyan-400">rezaul-islam-7b565.web.app</a>
+              <span>•</span>
+              <a href="https://linkedin.com/in/mdrezaul-islam" target="_blank" rel="noreferrer" className="hover:text-cyan-400">linkedin.com/in/mdrezaul-islam</a>
             </div>
           </div>
 
           {/* Professional Summary */}
           <div>
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-2 text-gradient-cyan">
-              Professional Summary
+            <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono mb-2 pb-1 border-b border-slate-800 text-gradient-cyan">
+              PROFESSIONAL SUMMARY
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {personalInfo.bio}
+              Front-end web developer with hands-on experience building and maintaining sites on Wix, Wix Studio, Squarespace, and GoDaddy, plus full-stack projects in React, Node.js, Express.js, and MongoDB. Comfortable working across the stack, from custom Wix Velo code to backend logic and database design. Looking for an executive-level web development role with full ownership of client and product sites.
             </p>
           </div>
 
-          {/* Experience */}
+          {/* Core Skills */}
           <div>
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-4 text-gradient-cyan flex items-center gap-2">
-              <Briefcase className="w-4 h-4 text-cyan-400 animate-pulse" />
-              <span>Work Experience</span>
+            <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono mb-2.5 pb-1 border-b border-slate-800 text-gradient-cyan">
+              CORE SKILLS
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+              <p><strong className="text-white font-semibold">Languages:</strong> HTML, CSS, JavaScript (ES2020), TypeScript</p>
+              <p><strong className="text-white font-semibold">Front-End:</strong> React.js, Tailwind CSS, Bootstrap</p>
+              <p><strong className="text-white font-semibold">Back-End:</strong> Node.js, Express.js</p>
+              <p><strong className="text-white font-semibold">Platforms:</strong> Wix, Wix Studio, Wix Velo, Squarespace, GoDaddy</p>
+              <p><strong className="text-white font-semibold">Databases:</strong> MongoDB, Firebase</p>
+              <p><strong className="text-white font-semibold">Tools:</strong> Git, GitHub, Netlify, Vercel</p>
+            </div>
+          </div>
+
+          {/* Professional Experience */}
+          <div>
+            <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 pb-1 border-b border-slate-800 text-gradient-cyan">
+              PROFESSIONAL EXPERIENCE
             </h2>
             <div className="space-y-4">
-              {experience.map((exp) => (
-                <div key={exp.id} className="p-4 rounded-[12px] bg-dark-900 border border-slate-800 hover:border-cyan-500/30 transition-all">
-                  <div className="flex flex-wrap items-center justify-between gap-1 mb-1">
-                    <span className="font-bold text-white text-sm">{exp.role}</span>
-                    <span className="text-xs font-mono text-cyan-400">{exp.period}</span>
-                  </div>
-                  <div className="text-xs font-medium text-slate-400 mb-2">{exp.company} • {exp.type}</div>
-                  <ul className="list-disc list-inside space-y-1 text-xs text-slate-300">
-                    {exp.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
+              
+              {/* Job 1 */}
+              <div className="p-4 rounded-[12px] bg-dark-900 border border-slate-800">
+                <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
+                  <h3 className="text-xs sm:text-sm font-bold text-white">
+                    Front End Developer (Executive) — <span className="text-cyan-400 font-semibold">Softvence Agency</span>
+                  </h3>
+                  <span className="text-[11px] font-mono text-cyan-300 font-semibold">1 Year 4 Months</span>
                 </div>
-              ))}
+                <ul className="list-disc list-inside space-y-1 text-xs text-slate-300">
+                  <li>Built and maintained websites for clients on Wix, Wix Studio, Squarespace, and GoDaddy, handling layout, page structure, and site functionality.</li>
+                  <li>Added custom functionality to Wix sites using Wix Velo when the built-in tools weren't enough.</li>
+                  <li>Worked directly with clients to gather requirements and turn them into working sites.</li>
+                  <li>Delivered mobile-responsive, easy-to-use designs on every project.</li>
+                </ul>
+              </div>
+
+              {/* Job 2 */}
+              <div className="p-4 rounded-[12px] bg-dark-900 border border-slate-800">
+                <div className="flex flex-wrap items-center justify-between gap-1 mb-1.5">
+                  <h3 className="text-xs sm:text-sm font-bold text-white">
+                    MERN Stack Web Development (Intern) — <span className="text-cyan-400 font-semibold">Universe IT Institute</span>
+                  </h3>
+                  <span className="text-[11px] font-mono text-cyan-300 font-semibold">Jul 2024 – Oct 2024</span>
+                </div>
+                <ul className="list-disc list-inside space-y-1 text-xs text-slate-300">
+                  <li>Built and maintained web application features using React.js, Node.js, Express.js, and MongoDB.</li>
+                  <li>Collaborated with the development team on full-stack functionality for live projects.</li>
+                  <li>Based in Aftabnagar, Merul Badda, Dhaka.</li>
+                </ul>
+              </div>
+
             </div>
           </div>
 
-          {/* Key Featured Projects */}
+          {/* Projects */}
           <div>
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-4 text-gradient-cyan flex items-center gap-2">
-              <Code2 className="w-4 h-4 text-cyan-400 animate-pulse" />
-              <span>Featured Projects</span>
+            <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 pb-1 border-b border-slate-800 text-gradient-cyan">
+              PROJECTS
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {projects.slice(0, 4).map((proj) => (
-                <div key={proj.id} className="p-3.5 rounded-[12px] bg-dark-900 border border-slate-800 hover:border-cyan-500/30 transition-all">
-                  <div className="font-bold text-white text-sm mb-1">{proj.title}</div>
-                  <div className="text-[11px] text-cyan-400 font-mono mb-2">{proj.techStack.slice(0, 4).join(', ')}</div>
-                  <p className="text-xs text-slate-300 line-clamp-2">{proj.description}</p>
-                </div>
-              ))}
+            <div className="space-y-3">
+              
+              <div className="p-3.5 rounded-[12px] bg-dark-900 border border-slate-800">
+                <h3 className="text-xs sm:text-sm font-bold text-white mb-1">
+                  Shop.co E-Commerce <span className="text-[11px] text-cyan-400 font-normal font-mono">(React, Node.js, Express.js, MongoDB, Tailwind CSS)</span>
+                </h3>
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-300">
+                  <li>Built a MERN stack e-commerce platform with user authentication, product management, and cart functionality.</li>
+                  <li>Integrated an admin dashboard and a responsive design using Tailwind CSS for a seamless shopping experience.</li>
+                </ul>
+              </div>
+
+              <div className="p-3.5 rounded-[12px] bg-dark-900 border border-slate-800">
+                <h3 className="text-xs sm:text-sm font-bold text-white mb-1">
+                  Doctors-Appointment <span className="text-[11px] text-cyan-400 font-normal font-mono">(React, Firebase, Node.js, Express.js, MongoDB, Tailwind CSS)</span>
+                </h3>
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-300">
+                  <li>Built a full-stack booking application for scheduling doctor appointments and tracking service history.</li>
+                  <li>Added a streamlined interface for managing customer data.</li>
+                </ul>
+              </div>
+
+              <div className="p-3.5 rounded-[12px] bg-dark-900 border border-slate-800">
+                <h3 className="text-xs sm:text-sm font-bold text-white mb-1">
+                  Car Servicing Center <span className="text-[11px] text-cyan-400 font-normal font-mono">(React, Firebase, Node.js, Express.js, MongoDB, Tailwind CSS)</span>
+                </h3>
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-300">
+                  <li>Built a full-stack application for managing car service bookings and tracking service history.</li>
+                  <li>Delivered a streamlined interface for scheduling services and managing customer data.</li>
+                </ul>
+              </div>
+
             </div>
           </div>
 
-          {/* Technical Skills */}
-          <div>
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-gradient-cyan">
-              Core Technical Skills
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              {skillCategories.map((cat) => (
-                <div key={cat.id} className="p-3 rounded-[12px] bg-dark-900 border border-slate-800">
-                  <span className="font-bold text-slate-200 block mb-1">{cat.name}:</span>
-                  <span className="text-slate-400">{cat.skills.map(s => s.name).join(', ')}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Education & Certifications */}
+          {/* Education & Languages */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-gradient-cyan flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-cyan-400 animate-pulse" />
-                <span>Education</span>
+              <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono mb-2 pb-1 border-b border-slate-800 text-gradient-cyan">
+                EDUCATION
               </h2>
-              <div className="space-y-2.5">
-                {education.map((edu) => (
-                  <div key={edu.id} className="p-3 rounded-[12px] bg-dark-900 border border-slate-800">
-                    <div className="font-bold text-white text-xs">{edu.degree}</div>
-                    <div className="text-[11px] text-slate-400">{edu.institution} ({edu.period})</div>
-                    <div className="text-[10px] text-emerald-400 font-mono">{edu.status}</div>
-                  </div>
-                ))}
+              <div className="space-y-2 text-xs text-slate-300">
+                <div className="p-3 rounded-[12px] bg-dark-900 border border-slate-800">
+                  <div className="font-bold text-white">Diploma in Computer Engineering</div>
+                  <div className="text-slate-400">Thakurgaon Polytechnic Institute — 2021 – 2024</div>
+                  <div className="text-emerald-400 font-mono font-semibold text-[11px]">CGPA 3.37 / 4.00</div>
+                </div>
+                <div className="p-3 rounded-[12px] bg-dark-900 border border-slate-800">
+                  <div className="font-bold text-white">Dakhil Examination</div>
+                  <div className="text-slate-400">Boalmari Kanchdah Fazil Degree Madrasha — 2019 – 2020</div>
+                  <div className="text-emerald-400 font-mono font-semibold text-[11px]">GPA 4.56 / 5.00</div>
+                </div>
               </div>
             </div>
 
             <div>
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3 text-gradient-cyan flex items-center gap-2">
-                <Award className="w-4 h-4 text-violet-400 animate-pulse" />
-                <span>Certifications</span>
+              <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono mb-2 pb-1 border-b border-slate-800 text-gradient-cyan">
+                LANGUAGES
               </h2>
-              <div className="space-y-2.5">
-                {certifications.map((cert) => (
-                  <div key={cert.id} className="p-3 rounded-[12px] bg-dark-900 border border-slate-800">
-                    <div className="font-bold text-white text-xs">{cert.title}</div>
-                    <div className="text-[11px] text-slate-400">{cert.institution} • {cert.issued}</div>
-                  </div>
-                ))}
+              <div className="p-3.5 rounded-[12px] bg-dark-900 border border-slate-800 space-y-2 text-xs text-slate-300">
+                <p><strong className="text-white">English:</strong> Reading: High, Writing: Medium, Speaking: Medium</p>
+                <p><strong className="text-white">Bengali:</strong> Reading: Native, Writing: Native, Speaking: Native</p>
               </div>
             </div>
           </div>
@@ -179,15 +224,16 @@ export default function ResumeModal({ isOpen, onClose }) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-slate-800 bg-dark-950/80 flex items-center justify-between">
-          <span className="text-xs text-slate-400 font-mono">Md. Rezaul Islam • Portfolio 2026</span>
-          <button
-            onClick={handlePrint}
-            className="px-4 py-2 rounded-[10px] text-xs font-bold text-white bg-gradient-to-r from-brand-cyan to-brand-violet hover:opacity-95 shadow-md shadow-cyan-500/20 flex items-center gap-1.5 hover:scale-105 transition-all"
+        <div className="px-5 sm:px-6 py-3.5 border-t border-slate-800 bg-dark-950/90 flex items-center justify-between">
+          <span className="text-xs text-slate-400 font-mono">Md. Rezaul Islam • Official Resume</span>
+          <a
+            href="/Resume-Md-Rezaul-Islam.pdf"
+            download="Resume-Md-Rezaul-Islam.pdf"
+            className="px-4 py-2 rounded-[10px] text-xs font-bold text-white bg-gradient-to-r from-brand-cyan to-brand-violet hover:opacity-95 shadow-md shadow-cyan-500/20 flex items-center gap-1.5 hover:scale-105 transition-all uppercase tracking-wider"
           >
             <Download className="w-4 h-4" />
-            <span>Download PDF</span>
-          </button>
+            <span>DOWNLOAD PDF RESUME</span>
+          </a>
         </div>
 
       </div>

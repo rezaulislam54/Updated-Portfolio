@@ -48,8 +48,8 @@ export default function About({ onCopyText, copiedText }) {
   const coreStrengths = [
     {
       icon: <Cpu className="w-4 h-4 text-cyan-400" />,
-      title: "MERN STACK MASTERY",
-      desc: "Deep knowledge of React, Node.js, Express, and MongoDB for scalable web apps."
+      title: "FRONT END & CMS EXPERTISE",
+      desc: "Deep knowledge in React.js, Tailwind CSS, Wix Studio, and custom Wix Velo scripting."
     },
     {
       icon: <Zap className="w-4 h-4 text-amber-400" />,
@@ -58,13 +58,13 @@ export default function About({ onCopyText, copiedText }) {
     },
     {
       icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />,
-      title: "RELIABLE & SECURE",
-      desc: "Robust API security, JWT token authentication, and data validation."
+      title: "RELIABLE & FULL-STACK",
+      desc: "Node.js REST APIs, MongoDB databases, Firebase Auth, and reliable deployment."
     },
     {
       icon: <Compass className="w-4 h-4 text-purple-400" />,
-      title: "ADAPTIVE PROBLEM SOLVER",
-      desc: "Quick learner ready to adapt to emerging frameworks and team requirements."
+      title: "CLIENT-FIRST PROBLEM SOLVING",
+      desc: "Turning business requirements into fast, mobile-responsive, production-ready sites."
     }
   ];
 
@@ -84,8 +84,8 @@ export default function About({ onCopyText, copiedText }) {
           <h2 className="text-[26px] sm:text-4xl font-extrabold text-white tracking-tight mb-3 sm:mb-4 uppercase leading-tight">
             ABOUT <span className="text-gradient-cyan">ME</span> & CORE VALUES
           </h2>
-          <p className="text-slate-400 text-xs sm:text-base leading-relaxed">
-            Passionate software developer dedicated to crafting modern, user-friendly digital experiences that blend clean code architecture with impactful design.
+          <p className="text-slate-400 text-[14px] sm:text-base leading-relaxed">
+            Front End Developer (Executive) dedicated to building modern, user-friendly digital experiences that blend clean code architecture with high performance.
           </p>
         </div>
 
@@ -100,19 +100,19 @@ export default function About({ onCopyText, copiedText }) {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-xl font-bold text-white uppercase tracking-wide">WHO I AM</h3>
-                  <p className="text-[11px] sm:text-xs text-slate-400 font-mono uppercase tracking-wider">Full Stack Engineer & Problem Solver</p>
+                  <p className="text-[11px] sm:text-xs text-slate-400 font-mono uppercase tracking-wider">Front End Developer (Executive) & MERN Specialist</p>
                 </div>
               </div>
 
-              <div className="space-y-4 text-slate-300 text-xs sm:text-base leading-relaxed">
+              <div className="space-y-4 text-slate-300 text-[14px] sm:text-base leading-relaxed">
                 <p>
-                  Hi, I'm <strong className="text-white font-semibold">Md. Rezaul Islam</strong>, a passionate software developer with expertise in <span className="text-cyan-400 font-medium">Node.js</span>, <span className="text-violet-400 font-medium">React.js</span>, <span className="text-emerald-400 font-medium">Next.js</span>, <span className="text-sky-400 font-medium">Express.js</span>, and <span className="text-pink-400 font-medium">Tailwind CSS</span>.
+                  Hi, I'm <strong className="text-white font-semibold">Md. Rezaul Islam</strong>, a Front-End Web Developer with hands-on experience building and maintaining sites on <span className="text-cyan-400 font-medium">Wix, Wix Studio, Squarespace, and GoDaddy</span>, plus full-stack projects in <span className="text-violet-400 font-medium">React, Node.js, Express.js, and MongoDB</span>.
                 </p>
                 <p>
-                  I aim to continuously enhance my skills in full-stack web development. Committed to creating high-quality, user-friendly applications, I seek to contribute to technological innovation while advancing my career in a dynamic organization.
+                  Comfortable working across the entire stack, from custom Wix Velo code to backend logic and database design. Looking for an executive-level web development role with full ownership of client and product sites.
                 </p>
                 <p className="text-slate-400 text-xs sm:text-sm italic border-l-2 border-brand-cyan pl-3 py-1 bg-slate-900/40 rounded-r-[10px]">
-                  "I believe great software is not just about writing code; it's about solving real human problems with elegance, speed, and reliability."
+                  "Great software is not just about writing code; it's about solving real human problems with elegance, speed, and reliability."
                 </p>
               </div>
             </div>
@@ -209,7 +209,7 @@ export default function About({ onCopyText, copiedText }) {
                   <div className="text-[10px] sm:text-[11px] text-slate-300">Message on WhatsApp for instant replies</div>
                 </div>
                 <a
-                  href="https://wa.me/8801826847490"
+                  href={personalInfo.socials.whatsapp}
                   target="_blank"
                   rel="noreferrer"
                   className="px-3.5 py-1.5 rounded-[8px] bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all shadow-md shadow-emerald-500/20 uppercase tracking-wider"

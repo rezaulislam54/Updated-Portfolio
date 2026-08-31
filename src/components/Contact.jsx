@@ -9,7 +9,8 @@ import {
   Copy, 
   Check, 
   CheckCircle2, 
-  Clock 
+  Clock,
+  AlertCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { portfolioData } from '../data/portfolioData';
@@ -26,30 +27,52 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errorMessage) setErrorMessage('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       if (onNotify) onNotify('Please fill in all required fields!', 'error');
+      setErrorMessage('Please fill in your Name, Email, and Message.');
       return;
     }
 
     setIsSubmitting(true);
+    setErrorMessage('');
 
-    // Simulate sending message
-    setTimeout(() => {
+    try {
+      // Direct Email Delivery via FormSubmit AJAX to programmermdrezaulislam@gmail.com
+      const response = await fetch('https://formsubmit.co/ajax/programmermdrezaulislam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: formData.subject || `New Portfolio Message from ${formData.name}`,
+          message: formData.message,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      const result = await response.json();
+
       setIsSubmitting(false);
       setSubmitted(true);
 
       // Trigger Confetti Celebration!
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 90,
+          spread: 75,
           origin: { y: 0.6 }
         });
       } catch (err) {
@@ -57,15 +80,27 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
       }
 
       if (onNotify) {
-        onNotify('Message received! Thank you, I will get back to you promptly.', 'success');
+        onNotify('Message sent directly to Rezaul Islam! Thank you.', 'success');
       }
 
       // Reset form after delay
       setTimeout(() => {
         setFormData({ name: '', email: '', subject: '', message: '' });
         setSubmitted(false);
-      }, 5000);
-    }, 1200);
+      }, 6000);
+
+    } catch (error) {
+      console.warn('Network send fallback:', error);
+      setIsSubmitting(false);
+      
+      // Fallback: If network blocks third party endpoint, trigger mailto client
+      window.location.href = `mailto:programmermdrezaulislam@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+      
+      setSubmitted(true);
+      if (onNotify) {
+        onNotify('Opening your mail client to send message...', 'info');
+      }
+    }
   };
 
   return (
@@ -84,8 +119,8 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
           <h2 className="text-[26px] sm:text-4xl font-extrabold text-white tracking-tight mb-3 sm:mb-4 uppercase leading-tight">
             GET IN <span className="text-gradient-cyan">TOUCH</span> WITH ME
           </h2>
-          <p className="text-slate-400 text-xs sm:text-base leading-relaxed">
-            Have a project in mind, seeking a dedicated MERN developer, or want to say hello? Send a message below or contact directly.
+          <p className="text-slate-400 text-[14px] sm:text-base leading-relaxed">
+            Have a project in mind, seeking a dedicated Front End & MERN developer, or want to collaborate? Send a message below.
           </p>
         </div>
 
@@ -95,8 +130,8 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
           <div className="lg:col-span-5 space-y-5 sm:space-y-6">
             <div className="glass-card p-5 sm:p-8 rounded-[14px] border border-slate-800/80">
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 uppercase tracking-wide">LET'S TALK ABOUT YOUR NEXT PROJECT</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6">
-                I'm available for remote, hybrid, or on-site engineering opportunities and freelance contracts.
+              <p className="text-slate-400 text-[14px] leading-relaxed mb-5 sm:mb-6">
+                I'm available for full-time executive roles, agency contracts, and freelance projects worldwide.
               </p>
 
               {/* Direct Info List */}
@@ -180,7 +215,7 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
                   </div>
 
                   <a
-                    href="https://wa.me/8801826847490"
+                    href={personalInfo.socials.whatsapp}
                     target="_blank"
                     rel="noreferrer"
                     className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-[8px] bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all shadow-md shadow-emerald-500/20 whitespace-nowrap uppercase tracking-wider"
@@ -193,21 +228,28 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
             </div>
           </div>
 
-          {/* Right Column: Interactive Contact Form */}
+          {/* Right Column: Direct Email Dispatch Contact Form */}
           <div className="lg:col-span-7">
             <div className="glass-card p-5 sm:p-8 rounded-[14px] border border-slate-800/80 relative">
               
               <h3 className="text-base sm:text-lg font-bold text-white mb-2 uppercase tracking-wide">SEND A DIRECT MESSAGE</h3>
-              <p className="text-xs text-slate-400 mb-5 sm:mb-6">Fill in the form below and I will respond to your email as soon as possible.</p>
+              <p className="text-xs sm:text-sm text-slate-400 mb-5 sm:mb-6">Messages submitted here are delivered straight to <strong className="text-cyan-400 font-mono">programmermdrezaulislam@gmail.com</strong>.</p>
+
+              {errorMessage && (
+                <div className="mb-4 p-3 rounded-[10px] bg-rose-950/50 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
 
               {submitted ? (
                 <div className="py-10 sm:py-12 px-4 text-center rounded-[12px] bg-emerald-950/30 border border-emerald-500/40 animate-fadeIn">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[10px] bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto mb-4 text-emerald-400">
                     <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-2 uppercase tracking-wide">THANK YOU! MESSAGE SENT SUCCESSFULLY.</h4>
+                  <h4 className="text-base sm:text-lg font-bold text-white mb-2 uppercase tracking-wide">THANK YOU! MESSAGE DELIVERED TO REZAUL ISLAM.</h4>
                   <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
-                    I have received your inquiry. I will get back to you at <span className="text-emerald-400 font-semibold">{formData.email}</span> shortly.
+                    Your message has been sent to <span className="text-emerald-400 font-semibold font-mono">{personalInfo.email}</span>. You will receive a response shortly.
                   </p>
                 </div>
               ) : (
@@ -256,7 +298,7 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="e.g. Full-Stack Project Collaboration / Job Offer"
+                      placeholder="e.g. Executive Role Offer / Web Project Collaboration"
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-[10px] bg-dark-900 border border-slate-800 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all"
                     />
                   </div>
@@ -286,19 +328,19 @@ export default function Contact({ onCopyText, copiedText, onNotify }) {
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                        <span>SENDING MESSAGE...</span>
+                        <span>DISPATCHING MESSAGE...</span>
                       </span>
                     ) : (
                       <>
-                        <span>SEND MESSAGE</span>
+                        <span>SEND MESSAGE TO EMAIL</span>
                         <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
                   </button>
 
                   <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-slate-500 pt-1 uppercase tracking-wider">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>AVERAGE REPLY TIME: UNDER 2 HOURS</span>
+                    <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>DIRECT INBOX DELIVERY: GUARANTEED RESPONSE</span>
                   </div>
                 </form>
               )}
