@@ -50,12 +50,12 @@ export default function Footer() {
           </div>
 
           {/* Nav links - Guaranteed SINGLE LINE on Desktop (Col 5-10) */}
-          <div className="lg:col-span-6 flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-3.5 sm:gap-x-4 lg:gap-x-3 xl:gap-x-5 gap-y-2 text-center whitespace-nowrap">
+          <div className="lg:col-span-6 flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 lg:gap-x-2 xl:gap-x-4 gap-y-2 text-center whitespace-nowrap">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[11px] sm:text-xs lg:text-[11px] xl:text-xs font-semibold text-slate-400 hover:text-brand-cyan transition-colors uppercase tracking-wider py-1 px-1 whitespace-nowrap"
+                className="text-[11px] sm:text-xs lg:text-[11px] xl:text-xs font-semibold text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 hover:border-slate-700/50 border border-transparent rounded-[8px] transition-all duration-200 uppercase tracking-wider py-1 px-2 whitespace-nowrap"
               >
                 {link.name}
               </a>
